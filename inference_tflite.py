@@ -33,4 +33,5 @@ interpreter.invoke()
 
 print(datetime.datetime.now())
 pred = interpreter.get_tensor(output_index) > 0.5
+print(pred.shape)
 print(datetime.datetime.now())
