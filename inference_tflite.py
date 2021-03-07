@@ -24,9 +24,11 @@ input_index = interpreter.get_input_details()[0]["index"]
 output_index = interpreter.get_output_details()[0]["index"]
 
 img = np.array(image).reshape(1,1344,448,3).astype(np.uint8)
-
+print("allocating tensor")
 interpreter.allocate_tensors()
+print("setting tensor")
 interpreter.set_tensor(input_index, img)
+print("invoking")
 interpreter.invoke()
 
 print(datetime.datetime.now())
