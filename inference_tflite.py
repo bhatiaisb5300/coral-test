@@ -13,8 +13,8 @@ img_path = 'IMG_20210201_171916.jpg'
 #img = preprocess(img)
 image = Image.open(img_path).convert('RGB').resize((1344,448), Image.ANTIALIAS)
 path = 'converted_model_quant_edgetpu.tflite'
-# interpreter = tf.lite.Interpreter(model_content=tflite_model)
-interpreter = Interpreter(model_path=path, experimental_delegates=[load_delegate('libedgetpu.so.1')])
+interpreter = tf.lite.Interpreter(model_path=path)
+# interpreter = Interpreter(model_path=path, experimental_delegates=[load_delegate('libedgetpu.so.1')])
 interpreter.allocate_tensors()
 
 # input_index = interpreter.get_input_details()[0]["index"]
