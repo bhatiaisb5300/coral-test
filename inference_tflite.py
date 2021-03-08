@@ -23,7 +23,7 @@ interpreter.allocate_tensors()
 input_index = interpreter.get_input_details()[0]["index"]
 output_index = interpreter.get_output_details()[0]["index"]
 
-img = np.array(image).reshape(1,1344,448,3).astype(np.uint8)
+img = np.array(image).reshape(1,1344,448,3).astype(np.int8)
 print("allocating tensor")
 interpreter.allocate_tensors()
 print("setting tensor")
