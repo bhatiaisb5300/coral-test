@@ -11,10 +11,10 @@ import numpy as np
 img_path = 'IMG_20210201_171916.jpg'
 #img = cv2.imread(img_path)
 #img = preprocess(img)
-image = Image.open(img_path).convert('RGB').resize((1344,448), Image.ANTIALIAS)
+image = Image.open(img_path).convert('RGB').resize((336,112), Image.ANTIALIAS)
 path = 'model1.tflite'
-interpreter = Interpreter(model_path=path)
-# interpreter = Interpreter(model_path=path, experimental_delegates=[load_delegate('libedgetpu.so.1')])
+# interpreter = Interpreter(model_path=path)
+interpreter = Interpreter(model_path=path, experimental_delegates=[load_delegate('libedgetpu.so.1')])
 interpreter.allocate_tensors()
 
 # input_index = interpreter.get_input_details()[0]["index"]
@@ -23,7 +23,7 @@ interpreter.allocate_tensors()
 input_index = interpreter.get_input_details()[0]["index"]
 output_index = interpreter.get_output_details()[0]["index"]
 
-img = np.array(image).reshape(1,1344,448,3).astype(np.int8)
+img = np.array(image).reshape(1,336,112,3).astype(np.int8)
 print("allocating tensor")
 interpreter.allocate_tensors()
 print("setting tensor")
